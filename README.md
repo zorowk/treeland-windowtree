@@ -35,7 +35,7 @@ Install it into another uv project so that project can import
 
 ```bash
 cd /path/to/other/project
-uv pip install -e /home/uos/Downloads/testwindowtree
+uv pip install -e /home/uos/Downloads/treeland-windowtree
 ```
 
 Verify the install:
@@ -47,7 +47,7 @@ uv run python -c "from treeland_windowtree import WindowTreeClient; print(Window
 For a non-editable install, use:
 
 ```bash
-uv pip install /home/uos/Downloads/testwindowtree
+uv pip install /home/uos/Downloads/treeland-windowtree
 ```
 
 ## Usage
@@ -63,8 +63,8 @@ cursor = client.cursor_position()
 CLI:
 
 ```bash
-uv run testwindowtree
-uv run testwindowtree --cursor
+uv run treeland-windowtree
+uv run treeland-windowtree --cursor
 ```
 
 Default connection values match Treeland:

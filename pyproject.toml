@@ -7,7 +7,7 @@ requires = [
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "testwindowtree"
+name = "treeland-windowtree"
 version = "0.1.0"
 description = "Python client for Treeland WindowTree Qt Remote Object."
 readme = "README.md"
@@ -15,7 +15,7 @@ requires-python = ">=3.10"
 dependencies = []
 
 [project.scripts]
-testwindowtree = "treeland_windowtree.cli:main"
+treeland-windowtree = "treeland_windowtree.cli:main"
 
 [tool.setuptools]
 packages = ["treeland_windowtree"]
