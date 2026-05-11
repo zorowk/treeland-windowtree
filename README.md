@@ -1,4 +1,4 @@
-# testwindowtree
+# treeland-windowtree
 
 Python client for Treeland's `WindowTreeRemote` Qt Remote Object.
 
@@ -21,6 +21,34 @@ system Qt6 Remote Objects development tools:
 The build defaults to `/usr/lib/qt6/libexec/repc` and
 `/usr/lib/qt6/libexec/moc`. Override with `REPC=/path/to/repc` or
 `MOC=/path/to/moc` if needed.
+
+## Install
+
+Install this library into the current uv environment:
+
+```bash
+uv pip install -e .
+```
+
+Install it into another uv project so that project can import
+`treeland_windowtree`:
+
+```bash
+cd /path/to/other/project
+uv pip install -e /home/uos/Downloads/testwindowtree
+```
+
+Verify the install:
+
+```bash
+uv run python -c "from treeland_windowtree import WindowTreeClient; print(WindowTreeClient)"
+```
+
+For a non-editable install, use:
+
+```bash
+uv pip install /home/uos/Downloads/testwindowtree
+```
 
 ## Usage
 
