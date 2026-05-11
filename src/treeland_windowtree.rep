@@ -1,0 +1,39 @@
+#include <QtCore/QVariant>
+#include <QtCore/QRectF>
+#include <QtCore/QPointF>
+
+POD WindowInfo(
+    QString appId,
+    QString title,
+    QString output,
+    QString container,
+    int workspace,
+    int layer,
+    int z,
+    int type,
+    int state,
+    bool visible,
+    QRectF geometry,
+    QRectF titlebarGeometry,
+    QRectF boundingRect,
+    QRectF iconGeometry,
+    QPointF position
+)
+
+POD WorkspaceInfo(
+    int id,
+    bool isActive,
+    QList<WindowInfo> windows
+)
+
+POD LayerInfo(
+    QString name,
+    int layer,
+    QList<WindowInfo> windows,
+    QList<WorkspaceInfo> workspaces
+)
+
+class WindowTreeRemote {
+    SLOT(QList<LayerInfo> getFullLayoutTree());
+    PROP(QPointF cursorPosition READONLY)
+};
