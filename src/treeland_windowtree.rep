@@ -34,7 +34,12 @@ POD LayerInfo(
     QList<WorkspaceInfo> workspaces // if is workspace
 )
 
+POD TreelandInfo(
+    QString currentMode,
+    QList<LayerInfo> layers
+)
+
 class WindowTreeRemote {
-    SLOT(QList<LayerInfo> getFullLayoutTree());
+    SLOT(TreelandInfo getTreelandInfo());
     PROP(QPointF cursorPosition READONLY)
 };

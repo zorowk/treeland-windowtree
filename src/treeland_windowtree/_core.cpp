@@ -121,6 +121,14 @@ py::list layers_to_list(const QList<LayerInfo> &layers)
     return result;
 }
 
+py::dict treelandinfo_to_dict(const TreelandInfo &info)
+{
+    py::dict result;
+    result["currentMode"] = to_string(info.currentMode());
+    result["layers"] = layers_to_list(info.layers());
+    return result;
+}
+
 void register_named_metatypes()
 {
     WindowTreeRemoteReplica::registerMetatypes();
@@ -130,6 +138,7 @@ void register_named_metatypes()
     qRegisterMetaType<QList<WorkspaceInfo>>("QList<WorkspaceInfo>");
     qRegisterMetaType<LayerInfo>("LayerInfo");
     qRegisterMetaType<QList<LayerInfo>>("QList<LayerInfo>");
+    qRegisterMetaType<TreelandInfo>("TreelandInfo");
 }
 
 } // namespace
@@ -162,9 +171,9 @@ public:
         }
     }
 
-    py::list get_full_layout_tree()
+    py::dict get_full_layout_tree()
     {
-        auto reply = replica_->getFullLayoutTree();
+        auto reply = replica_->getTreelandInfo();
         bool finished = false;
         {
             py::gil_scoped_release release;
@@ -172,11 +181,11 @@ public:
         }
 
         if (!finished)
-            throw std::runtime_error("timed out waiting for getFullLayoutTree()");
+            throw std::runtime_error("timed out waiting for getTreelandInfo()");
         if (reply.error() != QRemoteObjectPendingCall::NoError)
-            throw std::runtime_error("getFullLayoutTree() returned a Qt Remote Objects error");
+            throw std::runtime_error("getTreelandInfo() returned a Qt Remote Objects error");
 
-        return layers_to_list(reply.returnValue());
+        return treelandinfo_to_dict(reply.returnValue());
     }
 
     py::dict cursor_position() const
