@@ -13,6 +13,7 @@ POD WindowInfo(
     int type,
     int state,
     bool visible,
+    bool active,
     QRectF geometry,
     QRectF titlebarGeometry,
     QRectF boundingRect,
@@ -29,8 +30,8 @@ POD WorkspaceInfo(
 POD LayerInfo(
     QString name,
     int layer,
-    QList<WindowInfo> windows,
-    QList<WorkspaceInfo> workspaces
+    QList<WindowInfo> windows,  // normal layer
+    QList<WorkspaceInfo> workspaces // if is workspace
 )
 
 class WindowTreeRemote {

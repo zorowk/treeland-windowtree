@@ -69,6 +69,7 @@ py::dict window_to_dict(const WindowInfo &window)
     result["type"] = window.type();
     result["state"] = window.state();
     result["visible"] = window.visible();
+    result["active"] = window.active();
     result["geometry"] = rect_to_dict(window.geometry());
     result["titlebarGeometry"] = rect_to_dict(window.titlebarGeometry());
     result["boundingRect"] = rect_to_dict(window.boundingRect());
